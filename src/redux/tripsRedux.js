@@ -1,3 +1,5 @@
+import arrayContainsArray from '../utils/arrayContainsArray';
+
 /* SELECTORS */
 
 export const getAllTrips = ({trips}) => trips;
@@ -11,17 +13,21 @@ export const getFilteredTrips = ({trips, filters}) => {
     output = output.filter(trip => pattern.test(trip.name));
   }
 
-  // TODO - filter by duration
+  // TODO: - filter by duration
+  output = output.filter(trip => (trip.days >= filters.duration.from && trip.days <= filters.duration.to));
 
-  // TODO - filter by tags
+  // TODO: - filter by tags
+  if (filters.tags.length) {
+    output = output.filter(trip => arrayContainsArray(trip.tags, filters.tags));
+  }
 
-  // TODO - sort by cost descending (most expensive goes first)
+  // TODO: - sort by cost descending (most expensive goes first)
 
   return output;
 };
 
 export const getTripById = ({trips}, tripId) => {
-  const filtered = trips;
+  const filtered = trips.filter(trip => tripId === trip.id);
 
   // TODO - filter trips by tripId
 
@@ -30,7 +36,7 @@ export const getTripById = ({trips}, tripId) => {
 };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
-  const filtered = trips;
+  const filtered = trips.filter(trip => countryCode ===trip.country.code);
 
   // TODO - filter trips by countryCode
 
