@@ -9,10 +9,14 @@ import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
 // TODO - import other views
 import Info from './components/views/Info/Info';
+import CountriesContainer from './components/views/Countries/CountriesContainer';
+import CountryContainer from './components/views/Country/CountryContainer';
+import RegionsContainer from './components/views/Regions/RegionsContainer';
 import NotFound from './components/views/NotFound/NotFound';
 
 import parseTrips from './utils/parseTrips';
 import {setMultipleStates} from './redux/globalRedux';
+import TripsContainer from './components/views/Trips/TripsContainer';
 
 class App extends React.Component {
   static propTypes = {
@@ -40,7 +44,11 @@ class App extends React.Component {
           <Switch location={location}>
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
+            <Route path='/trips/:id' component={TripsContainer} />
             {/* TODO - add more routes for other views */}
+            <Route exact path='/countries' component={CountriesContainer} />
+            <Route path='/country/:id' component={CountryContainer} />
+            <Route exact path='/regions' component={RegionsContainer} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
           </Switch>
