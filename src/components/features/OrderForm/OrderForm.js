@@ -12,7 +12,7 @@ const OrderForm = props => (
     <Grid>
       <Row>
         <Col xs={12}>
-          <OrderSummary summaryCost={props.tripCost} optionsSummary={props.options} />
+          <OrderSummary tripCost={props.tripCost} options={props.options} />
         </Col>
       </Row>
     </Grid>
