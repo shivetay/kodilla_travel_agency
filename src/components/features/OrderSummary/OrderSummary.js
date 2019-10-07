@@ -16,5 +16,3 @@ OrderSummary.propTypes ={
 };
 
 export default OrderSummary;
-
-// {calculateTotal((props.summaryCost, props.optionsSummary))}
