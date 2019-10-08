@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
 import {formatPrice} from '../../../utils/formatPrice';
 
@@ -27,4 +28,10 @@ const OrderOptionsChexkboxes = ({values, currentValue, setOptionValue}) => (
     ))}
   </div>
 );
+
+OrderOptionsChexkboxes.propTypes = {
+  values: PropTypes.array,
+  currentValue: PropTypes.any,
+  setOptionValue: PropTypes.any,
+};
 export default OrderOptionsChexkboxes;
