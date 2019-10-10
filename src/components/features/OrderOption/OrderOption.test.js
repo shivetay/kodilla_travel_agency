@@ -57,18 +57,27 @@ describe('Component Order Option', () => {
       let component;
       let subcomponent;
       let renderedSubcomponent;
+      let mockSetOrderOption;
 
       beforeEach(() => {
+        mockSetOrderOption = jest.fn();
         component = shallow(
           <OrderOption
             type={type}
+            setOrderOption={mockSetOrderOption}
             {...mockProps}
             {...mockPropsForType[type]}
           />
         );
         subcomponent = component.find(optionTypes[type]);
         renderedSubcomponent = subcomponent.dive();
+
+        it(`renders ${optionTypes[type]}`, () => {
+          expect(subcomponent).toBeTruthy();
+          expect(subcomponent.length).toBe(1);
+        });
       });
+
       
       /* common tests */
       it('passes dummy test', () => {
@@ -79,7 +88,68 @@ describe('Component Order Option', () => {
       /* type-specific tests */
       switch (type) {
         case 'dropdown': {
-          /* tests for dropdown */
+          it('contains select and options', () => {
+            const select = renderedSubcomponent.find('select');
+            expect(select.length).toBe(1);
+          
+            const emptyOption = select.find('option[value=""]').length;
+            expect(emptyOption).toBe(1);
+          
+            const options = select.find('option').not('[value=""]');
+            expect(options.length).toBe(mockProps.values.length);
+            expect(options.at(0).prop('value')).toBe(mockProps.values[0].id);
+            expect(options.at(1).prop('value')).toBe(mockProps.values[1].id);
+          });
+
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent.find('select').simulate('change', {currentTarget: {value: testValue}});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+          });
+          break;
+        } case 'checkboxes': {
+          it('renders input with type checkbox', () => {
+            const checkbox = renderedSubcomponent.find('input');
+            expect(checkbox).toHaveLength(2);
+  
+            expect(checkbox.at(1).prop('value')).toBe(testValue);
+  
+            checkbox.at(1).simulate('change', {currentTarget: {checked: true}});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue]});
+          });
+          break;
+        } case 'number': {
+          it('renders input with type number', () => {
+            const input = renderedSubcomponent.find('input');
+            expect(input).toHaveLength(1);
+          });
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValueNumber}});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber });
+          });
+          break;
+        } case 'text': {
+          it('renders input with type text', () => {
+            const input = renderedSubcomponent.find('.input');
+            expect(input).toHaveLength(1);
+          });
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent.find('.input').at(0).simulate('change', {currentTarget: {value: testValue}});
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+          });
+          break;
+        } case 'date': {
+          it('should run setOrderOption function on change', () => {
+            const date = renderedSubcomponent.find('DatePicker');
+            expect(date).toHaveLength(1);
+  
+            renderedSubcomponent.find('DatePicker').simulate('change', testValue);
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+          });
           break;
         }
       }

@@ -10,6 +10,10 @@ describe('Component link', () => {
     const renderedLink = component.find('.link').prop('to');
     expect(renderedLink).toEqual(`/trip/${id}`);
   });
+  
+  it('should throw error if no props', () => {
+    expect(() => shallow(<TripSummary />)).toThrow();
+  });
 
   it('should render correct src and alt for image', () => {
     const expectedSrc = 'imageSrc';
