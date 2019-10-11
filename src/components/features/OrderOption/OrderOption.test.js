@@ -71,14 +71,13 @@ describe('Component Order Option', () => {
         );
         subcomponent = component.find(optionTypes[type]);
         renderedSubcomponent = subcomponent.dive();
-
-        it(`renders ${optionTypes[type]}`, () => {
-          expect(subcomponent).toBeTruthy();
-          expect(subcomponent.length).toBe(1);
-        });
       });
 
-      
+      it(`renders ${optionTypes[type]}`, () => {
+        expect(subcomponent).toBeTruthy();
+        expect(subcomponent.length).toBe(1);
+      });
+
       /* common tests */
       it('passes dummy test', () => {
         expect(1).toBe(1);
