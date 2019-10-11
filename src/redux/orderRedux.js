@@ -19,6 +19,7 @@ export default function reducer(statePart = [], action = {}) {
       return {
         ...statePart,
         options: {
+          ...statePart.name,
           ...statePart.options,
           ...action.payload,
         },
