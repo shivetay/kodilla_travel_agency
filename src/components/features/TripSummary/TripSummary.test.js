@@ -2,17 +2,13 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import TripSummary from './TripSummary';
 
-describe('Component link', () => {
-  it('should get correct link', () => {
-
+describe('Component TripSummary', () => {
+  it('should render correct link', () => {
     const id = 'abc';
     const component = shallow(<TripSummary id={id}/>);
+
     const renderedLink = component.find('.link').prop('to');
     expect(renderedLink).toEqual(`/trip/${id}`);
-  });
-  
-  it('should throw error if no props', () => {
-    expect(() => shallow(<TripSummary />)).toThrow();
   });
 
   it('should render correct src and alt for image', () => {
@@ -62,4 +58,5 @@ describe('Component link', () => {
     const renderedTags = component.find('.tags');
     expect(renderedTags).toBeTruthy();
   });
+
 });

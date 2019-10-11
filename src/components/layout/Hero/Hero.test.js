@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import {shallow} from 'enzyme';
 import Hero from './Hero';
@@ -7,9 +6,8 @@ describe('Component Hero', () => {
   it('should render without crashing', () => {
     const component = shallow(<Hero titleText='Lorem ipsum' />);
     expect(component).toBeTruthy();
-    console.log(component.debug());
   });
-
+  
   it('should throw error without required props', () => {
     expect(() => shallow(<Hero />)).toThrow();
   });
@@ -23,6 +21,7 @@ describe('Component Hero', () => {
     expect(renderedTitle).toEqual(expectedTitle);
     expect(component.find('.image').prop('src')).toEqual(expectedImage);
   });
+
   it('renders correct classNames', () => {
     const mockVariants = 'small dummy';
     const component = shallow(<Hero titleText='Lorem' imageSrc='image.jpg' variant={mockVariants} />);
