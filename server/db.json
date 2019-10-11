@@ -1,3 +1,19 @@
 {
-  "orders": []
+  "orders": [
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "lukasz",
+      "contact": "5674321267",
+      "start-date": "",
+      "totalCost": "$51,381",
+      "tripName": "Pleasant travel in cool Turkey",
+      "tripId": "5cc1d10130dfa407e2e54e20",
+      "countryCode": "TUR",
+      "id": 1
+    }
+  ]
 }
