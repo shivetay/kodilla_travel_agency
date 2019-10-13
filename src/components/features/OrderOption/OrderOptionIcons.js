@@ -4,7 +4,7 @@ import styles from './OrderOption.scss';
 import Icon from '../../common/Icon/Icon';
 import {formatPrice} from '../../../utils/formatPrice';
 
-const OrderOptionsIcons = ({values, required, currentValue, setOptionValue}) => (
+const OrderOptionsIcon = ({values, required, currentValue, setOptionValue}) => (
   <div className={styles.icon}>
 
     {required ? '' : (
@@ -29,10 +29,10 @@ const OrderOptionsIcons = ({values, required, currentValue, setOptionValue}) => 
   </div>
 );
 
-OrderOptionsIcons.propTypes = {
+OrderOptionsIcon.propTypes = {
   values: PropTypes.array,
   required: PropTypes.any,
   currentValue: PropTypes.any,
   setOptionValue: PropTypes.any,
 };
-export default OrderOptionsIcons;
+export default OrderOptionsIcon;

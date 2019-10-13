@@ -18,7 +18,7 @@ describe('Component Order Option', () => {
 
 const optionTypes = {
   dropdown: 'OrderOptionDropdown',
-  icons: 'OrderOptionIcons',
+  icons: 'OrderOptionIcon',
   checkboxes: 'OrderOptionCheckboxes',
   number: 'OrderOptionNumber',
   text: 'OrderOptionText',
@@ -81,8 +81,6 @@ for(let type in optionTypes){
       expect(subcomponent.length).toBe(1);
     });
      
-
-   
     switch (type) {
       case 'dropdown': {
         it('contains select and options', () => {
