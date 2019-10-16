@@ -18,7 +18,7 @@ describe('Component Order Option', () => {
 
 const optionTypes = {
   dropdown: 'OrderOptionDropdown',
-  icons: 'OrderOptionIcon',
+  icons: 'OrderOptionIcons',
   checkboxes: 'OrderOptionCheckboxes',
   number: 'OrderOptionNumber',
   text: 'OrderOptionText',
