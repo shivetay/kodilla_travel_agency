@@ -29,6 +29,23 @@
       "tripId": "5cc1d10130dfa407e2e54e20",
       "countryCode": "TUR",
       "id": 2
+    },
+    {
+      "car-rental": "suv",
+      "accommodation": "hotel",
+      "features": [
+        "pool"
+      ],
+      "adults": 1,
+      "children": 0,
+      "name": "mieszko",
+      "contact": "1230987 543",
+      "start-date": "2019-10-14T19:55:39.000Z",
+      "totalCost": "$52,581",
+      "tripName": "Pleasant travel in cool Turkey",
+      "tripId": "5cc1d10130dfa407e2e54e20",
+      "countryCode": "TUR",
+      "id": 3
     }
   ]
 }

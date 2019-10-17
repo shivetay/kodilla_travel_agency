@@ -52,6 +52,10 @@ class OrderForm extends React.Component {
   static propTypes = {
     tripCost: PropTypes.node,
     options: PropTypes.object,
+    setOrderOption: PropTypes.func,
+    tripName: PropTypes.string,
+    tripId: PropTypes.string,
+    countryCode: PropTypes.any,
   }
   render(){
     
