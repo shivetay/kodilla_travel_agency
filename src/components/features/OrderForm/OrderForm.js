@@ -61,7 +61,6 @@ class OrderForm extends React.Component {
     
     const {tripCost, options, setOrderOption, tripName, tripId, countryCode} = this.props;
     return (
-      //z parametrów zrobić obiek i go wywołać dodać event
       <form onSubmit={() => this.onSubmitBlock(sendOrder(event, {options, tripCost, tripName, tripId, countryCode}))}>
         <Row>
           {pricing.map(pricingData => (
@@ -75,8 +74,7 @@ class OrderForm extends React.Component {
           </Col>
           <Button>Order now!</Button>
         </Row>
-      </form>
-      
+      </form> 
     );
   }
 }

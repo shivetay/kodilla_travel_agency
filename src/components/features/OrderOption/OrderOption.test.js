@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import OrderOption from './OrderOption';
+import DatePicker from 'react-datepicker';
 
 
 describe('Component Order Option', () => {
@@ -107,7 +108,7 @@ for(let type in optionTypes){
           expect(divIcons).toHaveLength(3);
         });
         it('should run setOrderOption function on click', () => {
-          renderedSubcomponent.find('.icon .icon').at(2).simulate('click');
+          renderedSubcomponent.find('.icon').at(3).simulate('click');
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
@@ -116,7 +117,7 @@ for(let type in optionTypes){
         it('renders input with type checkbox', () => {
           const checkbox = renderedSubcomponent.find('input');
           expect(checkbox).toHaveLength(2);
-
+          
           expect(checkbox.at(1).prop('value')).toBe(testValue);
 
           checkbox.at(1).simulate('change', {currentTarget: {checked: true}});
@@ -149,10 +150,10 @@ for(let type in optionTypes){
       } case 'date': {
         it('should run setOrderOption function on change', () => {
           //import datepicker
-          const date = renderedSubcomponent.find('DatePicker');
+          const date = renderedSubcomponent.find(DatePicker);
           expect(date).toHaveLength(1);
 
-          renderedSubcomponent.find('DatePicker').simulate('change', testValue);
+          renderedSubcomponent.find(DatePicker).simulate('change', testValue);
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });

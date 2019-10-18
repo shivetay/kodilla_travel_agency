@@ -5,7 +5,7 @@ import Icon from '../../common/Icon/Icon';
 import {formatPrice} from '../../../utils/formatPrice';
 
 //FIXME:
-const OrderOptionsIcon = ({values, required, currentValue, setOptionValue}) => (
+const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
   <div className={styles.icon}>
 
     {required ? '' : (
@@ -30,10 +30,10 @@ const OrderOptionsIcon = ({values, required, currentValue, setOptionValue}) => (
   </div>
 );
 
-OrderOptionsIcon.propTypes = {
+OrderOptionIcons.propTypes = {
   values: PropTypes.array,
   required: PropTypes.any,
   currentValue: PropTypes.any,
   setOptionValue: PropTypes.any,
 };
-export default OrderOptionsIcon;
+export default OrderOptionIcons;

@@ -4,7 +4,7 @@ import styles from './OrderOption.scss';
 
 
 
-const OrderOptionsNumber = ({limits, currentValue, setOptionValue}) => (
+const OrderOptionNumber = ({limits, currentValue, setOptionValue}) => (
   <div className={styles.number}>
     <input
       type='number'
@@ -18,10 +18,10 @@ const OrderOptionsNumber = ({limits, currentValue, setOptionValue}) => (
   </div>
 );
 
-OrderOptionsNumber.propTypes = {
+OrderOptionNumber.propTypes = {
   limits: PropTypes.any,
   currentValue: PropTypes.any,
   setOptionValue: PropTypes.any,
 };
 
-export default OrderOptionsNumber;
+export default OrderOptionNumber;
