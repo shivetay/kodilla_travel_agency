@@ -12,7 +12,7 @@ const OrderOptionsIcon = ({values, required, currentValue, setOptionValue}) => (
       <div
         className={styles.icon}
         value={currentValue}
-        onChange={value => setOptionValue('')}>
+        onChange={() => setOptionValue('')}>
         <Icon name={'times-circle'} />None
       </div>
     )}
@@ -22,7 +22,7 @@ const OrderOptionsIcon = ({values, required, currentValue, setOptionValue}) => (
         className={` ${styles.icon} ${currentValue === value.id ? styles.iconActive: ''}`}
         key={value.id}
         value={currentValue}
-        onClick={event => setOptionValue(value.id)}>
+        onClick={() => setOptionValue(value.id)}>
         <Icon name={value.icon} />
         {value.name} ({formatPrice(value.price)})
       </div>

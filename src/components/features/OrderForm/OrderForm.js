@@ -45,7 +45,7 @@ const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
 
 
 class OrderForm extends React.Component {
-  onSubmit = (event) => {
+  onSubmitBlock = (event) => {
     event.preventDefault();
   }
 
@@ -61,7 +61,8 @@ class OrderForm extends React.Component {
     
     const {tripCost, options, setOrderOption, tripName, tripId, countryCode} = this.props;
     return (
-      <form onSubmit={() => sendOrder(options, tripCost, tripName, tripId, countryCode)}>
+      //z parametrów zrobić obiek i go wywołać dodać event
+      <form onSubmit={() => this.onSubmitBlock(sendOrder(event, {options, tripCost, tripName, tripId, countryCode}))}>
         <Row>
           {pricing.map(pricingData => (
             <Col md={4} key={pricingData.id}>

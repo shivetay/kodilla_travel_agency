@@ -55,9 +55,9 @@ describe('Component link', () => {
     expect(secondTag).toEqual(expectedTags[1]);
     expect(thirdTag).toEqual(expectedTags[2]);
   });
-
+  //zmiana pustej tablicy
   it('should render tags div if tags is truthy', () => {
-    const component = shallow(<TripSummary tags={['one', 'two', 'three']} />);
+    const component = shallow(<TripSummary tags={[]} />);
 
     const renderedTags = component.find('.tags');
     expect(renderedTags).toBeTruthy();

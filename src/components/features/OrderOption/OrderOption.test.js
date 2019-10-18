@@ -148,6 +148,7 @@ for(let type in optionTypes){
         break;
       } case 'date': {
         it('should run setOrderOption function on change', () => {
+          //import datepicker
           const date = renderedSubcomponent.find('DatePicker');
           expect(date).toHaveLength(1);
 
