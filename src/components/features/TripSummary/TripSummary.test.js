@@ -12,7 +12,8 @@ describe('Component link', () => {
   });
   
   it('should throw error if no props', () => {
-    expect(() => shallow(<TripSummary />)).toThrow();
+    const component = shallow (<TripSummary />);
+    expect(component).toEqual({});
   });
 
   it('should render correct src and alt for image', () => {
