@@ -13,7 +13,9 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
 
-const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
+const sendOrder = (EVENT, options, tripCost, tripName, tripId, countryCode) => {
+  EVENT.preventDefault();
+
   const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
 
   const payload = {
@@ -45,9 +47,13 @@ const sendOrder = (options, tripCost, tripName, tripId, countryCode) => {
 
 
 class OrderForm extends React.Component {
-  onSubmitBlock = (event) => {
-    event.preventDefault();
-  }
+  // onSubmit = (event) => {
+  //   event.preventDefault();
+  // }
+  // constructor(props) {
+  //   super(props);
+  //   this.sendOrder = this.sendOrder.bind(this);
+  // }
 
   static propTypes = {
     tripCost: PropTypes.node,
@@ -57,11 +63,12 @@ class OrderForm extends React.Component {
     tripId: PropTypes.string,
     countryCode: PropTypes.any,
   }
+
   render(){
     
     const {tripCost, options, setOrderOption, tripName, tripId, countryCode} = this.props;
     return (
-      <form onSubmit={() => this.onSubmitBlock(sendOrder(event, {options, tripCost, tripName, tripId, countryCode}))}>
+      <form onSubmit={(EVENT) => this.sendOrder(EVENT, {options, tripCost, tripName, tripId, countryCode})}>
         <Row>
           {pricing.map(pricingData => (
             <Col md={4} key={pricingData.id}>

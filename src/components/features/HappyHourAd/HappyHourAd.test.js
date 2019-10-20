@@ -90,7 +90,7 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
 
 describe('Component HappyHourAd with information about promotion with mocked Title', () => {
   checkDescriptionAtTime('12:00:00', '122');
-  checkDescriptionAtTime('12:25:59', '1');
+  checkDescriptionAtTime('12:25:58', '1');
   checkDescriptionAtTime('12:59:59', 23 * 60 * 60 + '');
 
   it('should render heading and description', () => {

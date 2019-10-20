@@ -4,7 +4,7 @@ import styles from './HappyHourAd.scss';
 
 class HappyHourAd extends React.Component {
   static propTypes = {
-    promoDescription: PropTypes.any,
+    promoDescription: PropTypes.string,
     title: PropTypes.string,
   }
 
