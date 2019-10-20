@@ -2,17 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './HappyHourAd.scss';
 
-
-
 class HappyHourAd extends React.Component {
   static propTypes = {
     promoDescription: PropTypes.any,
     title: PropTypes.string,
   }
-  
-  constructor() {
-    super();
-    setInterval(() => this.forceUpdate(), 1000);
+
+  static defaultProps = {
+    title: 'Happy Hour',
   }
   
   getCountdownTime(){
@@ -26,12 +23,16 @@ class HappyHourAd extends React.Component {
     return Math.round((nextNoon.getTime() - currentTime.getTime())/1000);
   }
   //FIXME:
+  constructor() {
+    super();
+    setInterval(() => this.forceUpdate(), 1000);
+  }
   render(){
     const {promoDescription, title} = this.props;
     return(
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.promoDescription}>{this.getCountdownTime()}{promoDescription}</div>
+        <div className={styles.promoDescription}>{this.getCountdownTime({promoDescription})}</div>
       </div>
     );   
   }

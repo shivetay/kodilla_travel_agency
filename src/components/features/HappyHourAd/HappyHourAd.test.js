@@ -24,7 +24,6 @@ describe('Component HappyHourAd', () => {
     expect(component.exists(select.promoDescription)).toEqual(true);
   });
 
-  // FIXME:
   it('should return empty object if called without required props', () => {
     expect(component).toEqual({});
   });
