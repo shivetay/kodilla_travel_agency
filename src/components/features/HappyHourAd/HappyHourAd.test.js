@@ -100,7 +100,7 @@ describe('test 5 - Component HappyHourAd with mocked Date and delay', () => {
 });
 
 //FIXME:
-describe('test 6 -Component HappyHourAd with proper description', () => {
+describe('test 6 - Component HappyHourAd with proper description', () => {
   checkDescriptionAtTime('12:30:00', '122');
   checkDescriptionAtTime('12:59:59', '1');
   checkDescriptionAtTime('12:00:00', 23 * 60 * 60 + '');
