@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './HappyHourAd.scss';
+import { formatTime } from '../../../utils/formatTime';
 import { settings } from '../../../data/dataStore';
 
 class HappyHourAd extends React.Component {
@@ -8,7 +9,7 @@ class HappyHourAd extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     promoDescription: PropTypes.string,
-    renderElementFunc: PropTypes.any,
+    renderElementFunc: PropTypes.func,
   }
 
   static defaultProps = {
@@ -31,10 +32,10 @@ class HappyHourAd extends React.Component {
     let renderElement;
     let promoTimer = this.getCountdownTime();
 
-    if(promoTimer <= 43199 || promoTimer >= 46800) {
+    if(promoTimer >= 43199 || promoTimer >= 46801) {
       renderElement = this.props.promoDescription;
     } else {
-      renderElement = promoTimer;
+      renderElement = formatTime(promoTimer);
     }
     return renderElement;
   }
