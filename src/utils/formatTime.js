@@ -11,5 +11,5 @@ export const formatTime = (time) => {
                     minutes.toString().padStart(2,'0') + ':' +
                     seconds.toString().padStart(2, '0');
 
-  return Number(timeString);
+  return timeString;
 };

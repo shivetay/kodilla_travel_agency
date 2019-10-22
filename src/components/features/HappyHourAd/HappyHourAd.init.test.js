@@ -70,7 +70,7 @@ const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
 describe('test init - Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('11:57:58', 2, '00:02:00');
   checkDescriptionAfterTime('11:59:58', 1, '00:00:01');
-  checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
+  checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '22:00:00');
 });
 
 
