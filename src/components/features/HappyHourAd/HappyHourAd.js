@@ -8,7 +8,7 @@ class HappyHourAd extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     promoDescription: PropTypes.string,
-    renderElement: PropTypes.string,
+    renderElement: PropTypes.any,
   }
 
   static defaultProps = {
@@ -27,15 +27,16 @@ class HappyHourAd extends React.Component {
     return Math.round((nextNoon.getTime() - currentTime.getTime())/1000);
   }
 
-  renderElement() {
+  renderElementFunc() {
     let renderElement;
     let promoTimer = getCountdownTime();
 
     if(promoTimer <= 43199 || promoTimer >= 46800) {
-      renderElement = static.promoDescription;
+      renderElement = promoDescription;
     } else {
       renderElement = this.getCountdownTime();
     }
+    return renderElement;
   }
   constructor(){
     super();
