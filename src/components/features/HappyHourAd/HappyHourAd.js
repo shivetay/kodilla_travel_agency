@@ -8,7 +8,7 @@ class HappyHourAd extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     promoDescription: PropTypes.string,
-    renderElement: PropTypes.any,
+    renderElementFunc: PropTypes.any,
   }
 
   static defaultProps = {
@@ -43,12 +43,12 @@ class HappyHourAd extends React.Component {
     setInterval(() => this.forceUpdate(), 1000);
   }
   render() {
-    const{renderElement, title} = this.props;
+    const{ title} = this.props;
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.promoDescription}>
-          {renderElement}
+          {this.renderElementFunc()}
         </div>
       </div>
     );
