@@ -29,12 +29,12 @@ class HappyHourAd extends React.Component {
 
   renderElementFunc() {
     let renderElement;
-    let promoTimer = getCountdownTime();
+    let promoTimer = this.getCountdownTime();
 
     if(promoTimer <= 43199 || promoTimer >= 46800) {
-      renderElement = static.promoDescription;
+      renderElement = this.props.promoDescription;
     } else {
-      renderElement = this.getCountdownTime();
+      renderElement = promoTimer;
     }
     return renderElement;
   }
