@@ -13,43 +13,45 @@ import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
 //FIXME:
-const sendOrder = (event, options, tripCost, tripName, tripId, countryCode) => {
-  event.preventDefault();
+// const sendOrder = (event, options, tripCost, tripName, tripId, countryCode) => {
+//   event.preventDefault();
 
-  const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
+//   const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
 
-  const payload = {
-    ...options,
-    totalCost,
-    tripName,
-    tripId,
-    countryCode,
-  };
+//   const payload = {
+//     ...options,
+//     totalCost,
+//     tripName,
+//     tripId,
+//     countryCode,
+//   };
 
-  const url = settings.db.url + '/' + settings.db.endpoint.orders;
+//   const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
-  const fetchOptions = {
-    cache: 'no-cache',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-  };
+//   const fetchOptions = {
+//     cache: 'no-cache',
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(payload),
+//   };
 
-  fetch(url, fetchOptions)
-    .then(function(response){
-      return response.json();
-    }).then(function(parsedResponse){
-      console.log('parsedResponse', parsedResponse);
-    });
-};
+//   fetch(url, fetchOptions)
+//     .then(function(response){
+//       return response.json();
+//     }).then(function(parsedResponse){
+//       console.log('parsedResponse', parsedResponse);
+//     });
+// };
 
 
 class OrderForm extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
   }
+
+
   // constructor(props) {
   //   super(props);
   //   this.sendOrder = this.sendOrder.bind(this);
@@ -64,11 +66,43 @@ class OrderForm extends React.Component {
     countryCode: PropTypes.any,
   }
 
+  sendOrder = (event, options, tripCost, tripName, tripId, countryCode) => {
+    event.preventDefault();
+  
+    const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
+  
+    const payload = {
+      ...options,
+      totalCost,
+      tripName,
+      tripId,
+      countryCode,
+    };
+  
+    const url = settings.db.url + '/' + settings.db.endpoint.orders;
+  
+    const fetchOptions = {
+      cache: 'no-cache',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+  
+    fetch(url, fetchOptions)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
+  }
+
   render(){
     
     const {tripCost, options, setOrderOption, tripName, tripId, countryCode} = this.props;
     return (
-      <form onSubmit={() =>this.sendOrder(event, {options, tripCost, tripName, tripId, countryCode})}>
+      <form onSubmit={(event) =>this.sendOrder(event, options, tripCost, tripName, tripId, countryCode)}>
         <Row>
           {pricing.map(pricingData => (
             <Col md={4} key={pricingData.id}>
