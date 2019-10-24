@@ -66,7 +66,7 @@ const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
     jest.useRealTimers();
   });
 };
-//FIXME:
+
 describe('test init - Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAfterTime('11:57:58', 2, '00:02:00');
   checkDescriptionAfterTime('11:59:58', 1, '00:00:01');
