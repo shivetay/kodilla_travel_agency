@@ -44,7 +44,7 @@ class HappyHourAd extends React.Component {
     setInterval(() => this.forceUpdate(), 1000);
   }
   render() {
-    const{ title} = this.props;
+    const{ title } = this.props;
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>

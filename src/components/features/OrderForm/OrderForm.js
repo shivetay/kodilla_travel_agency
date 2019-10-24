@@ -12,7 +12,7 @@ import {formatPrice} from '../../../utils/formatPrice';
 import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
-
+//FIXME:
 const sendOrder = (event, options, tripCost, tripName, tripId, countryCode) => {
   event.preventDefault();
 
