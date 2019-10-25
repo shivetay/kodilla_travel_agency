@@ -4,7 +4,6 @@ import styles from './OrderOption.scss';
 import Icon from '../../common/Icon/Icon';
 import {formatPrice} from '../../../utils/formatPrice';
 
-//FIXME:
 const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
   <div className={styles.icon}>
 

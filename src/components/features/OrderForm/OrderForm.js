@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//import styles from './OrderForm.scss';
 
 import OrderSummary from '../OrderSummary/OrderSummary';
 import OrderOption from '../OrderOption/OrderOption';
@@ -12,50 +11,11 @@ import {formatPrice} from '../../../utils/formatPrice';
 import {calculateTotal} from '../../../utils/calculateTotal';
 import settings from '../../../data/settings';
 
-//FIXME:
-// const sendOrder = (event, options, tripCost, tripName, tripId, countryCode) => {
-//   event.preventDefault();
-
-//   const totalCost = formatPrice(calculateTotal(tripCost, options, countryCode));
-
-//   const payload = {
-//     ...options,
-//     totalCost,
-//     tripName,
-//     tripId,
-//     countryCode,
-//   };
-
-//   const url = settings.db.url + '/' + settings.db.endpoint.orders;
-
-//   const fetchOptions = {
-//     cache: 'no-cache',
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(payload),
-//   };
-
-//   fetch(url, fetchOptions)
-//     .then(function(response){
-//       return response.json();
-//     }).then(function(parsedResponse){
-//       console.log('parsedResponse', parsedResponse);
-//     });
-// };
-
 
 class OrderForm extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
   }
-
-
-  // constructor(props) {
-  //   super(props);
-  //   this.sendOrder = this.sendOrder.bind(this);
-  // }
 
   static propTypes = {
     tripCost: PropTypes.node,
