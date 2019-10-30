@@ -29,16 +29,31 @@ class SummerCounter extends React.Component {
     return Math.ceil((summer.getTime() - today.getTime())/(oneDay));
   }
 
+  //FIXME:
   renderElement(){
     let renderElementDate = new Date();
-    const summerCounter = this.dayCount();
+    let summerCounter = this.dayCount();
+
+    if(summerCounter < 0) {
+      summerCounter = 0;
+      return summerCounter;
+    }
+    // if(typeof summerCounter  !== 'number'){
+    //   return 0;
+    // }
+
+    // if(summerCounter === 1) {
+    //   renderElementDate = summerCounter + ' '  + this.props.oneDaySummer ;
+    // } else if (renderElementDate.getUTCMonth() !== 5 && renderElementDate.getUTCDate() === 21 || renderElementDate.getUTCMonth() !== 8 && renderElementDate.getUTCDate() === 23){
+    //   renderElementDate = this.props.noSummer;
+    // } else {
+    //   renderElementDate = summerCounter + this.props.summerDescription;
+    // }
 
     if(summerCounter === 1) {
-      renderElementDate = summerCounter  + this.props.oneDaySummer ;
-    } else if (renderElementDate.getUTCMonth() !== 5 && renderElementDate.getUTCDate() === 21 || renderElementDate.getUTCMonth() !== 8 && renderElementDate.getUTCDate() === 23){
-      renderElementDate = this.props.noSummer;
+      renderElementDate =  this.props.oneDaySummer;
     } else {
-      renderElementDate = summerCounter + this.props.summerDescription;
+      renderElementDate = summerCounter + ' ' + this.props.summerDescription;
     }
 
     return renderElementDate;

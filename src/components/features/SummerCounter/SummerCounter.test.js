@@ -46,7 +46,7 @@ const mockDate = customDate => class extends Date {
     return this;
   }
   static now(){
-    return (new Date(customDate)).getDate();
+    return (new Date(customDate)).gettime();
   }
 };
 
@@ -65,7 +65,9 @@ const checkDescriptionAtday = (day, expectedDescription) => {
 };
 
 describe('test 4 -Component HappyHourAd with mocked Date', () => {
-  checkDescriptionAtday('20.05', 'oneDaySummer');
-  checkDescriptionAtday('18.05', 'summerDescription');
-  checkDescriptionAtday('19.08', 'noSummer');
+ 
+  checkDescriptionAtday('2020-05-20', 'oneDaySummer');
+  checkDescriptionAtday('2020-05-10', 'summerDescription');
+  checkDescriptionAtday('2020-10-10', 'summerDescription');
+  checkDescriptionAtday('2020-08-10', 'noSummer');
 });
