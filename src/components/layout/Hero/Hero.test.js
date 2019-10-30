@@ -9,12 +9,10 @@ describe('Component Hero', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should throw error without required props', () =>
-  {
-    const hero = () => {
-      render(<Hero />);
-    };
-    expect(hero).toThrow();
+  it('should throw error without required props', () => {
+    const hero = shallow(<Hero />);
+
+    expect(hero).toEqual({});
   });
 
   it('should render correct title and image', () => {
