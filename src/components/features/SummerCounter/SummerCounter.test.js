@@ -64,10 +64,14 @@ const checkDescriptionAtday = (day, expectedDescription) => {
   });
 };
 
-describe('test 4 -Component HappyHourAd with mocked Date', () => {
+describe('test 4 - Component HappyHourAd with mocked Date', () => {
  
-  checkDescriptionAtday('2020-05-20', 'oneDaySummer');
-  checkDescriptionAtday('2020-05-10', 'summerDescription');
-  checkDescriptionAtday('2020-10-10', 'summerDescription');
-  checkDescriptionAtday('2020-08-10', 'noSummer');
+  checkDescriptionAtday('2020-06-20', '1oneDaySummer');
+  checkDescriptionAtday('2020-05-10', '42summerDescription');
+  checkDescriptionAtday('2020-10-10', '254summerDescription');
+  checkDescriptionAtday('2020-08-10', '');
+  checkDescriptionAtday('2020-07-10', '');
+  checkDescriptionAtday('2020-09-23', '');
+  checkDescriptionAtday('2020-09-24', '270summerDescription');
 });
+

@@ -23,39 +23,27 @@ class SummerCounter extends React.Component {
     const summer = new Date(today.getUTCFullYear(), 5, 21);
     const oneDay = 1000*60*60*24;
 
-    if(today.getUTCMonth() !== 5 && today.getUTCDate() >21 ) {
+    if( 
+      today.getUTCMonth() === 8 && today.getUTCDate() >23 || today.getUTCMonth() >= 9) {
       summer.setUTCFullYear(summer.getUTCFullYear()+1);
+    } else if (today.getUTCMonth() === 5 && today.getUTCDate() >=21 || today.getUTCMonth() >= 6) {
+      return 0;
     }
     return Math.ceil((summer.getTime() - today.getTime())/(oneDay));
   }
 
-  //FIXME:
   renderElement(){
     let renderElementDate = new Date();
     let summerCounter = this.dayCount();
 
-    if(summerCounter < 0) {
-      summerCounter = 0;
-      return summerCounter;
-    }
-    // if(typeof summerCounter  !== 'number'){
-    //   return 0;
-    // }
-
-    // if(summerCounter === 1) {
-    //   renderElementDate = summerCounter + ' '  + this.props.oneDaySummer ;
-    // } else if (renderElementDate.getUTCMonth() !== 5 && renderElementDate.getUTCDate() === 21 || renderElementDate.getUTCMonth() !== 8 && renderElementDate.getUTCDate() === 23){
-    //   renderElementDate = this.props.noSummer;
-    // } else {
-    //   renderElementDate = summerCounter + this.props.summerDescription;
-    // }
-
     if(summerCounter === 1) {
-      renderElementDate =  this.props.oneDaySummer;
+      renderElementDate = summerCounter + this.props.oneDaySummer ;
+    } else if (renderElementDate.getUTCMonth() === 5 && renderElementDate.getUTCDate() >=21 || 
+    renderElementDate.getUTCMonth() > 5 && renderElementDate.getUTCMonth() < 8 ||renderElementDate.getUTCMonth() === 8 && renderElementDate.getUTCDate() <= 23){
+      renderElementDate = this.props.noSummer;
     } else {
-      renderElementDate = summerCounter + ' ' + this.props.summerDescription;
+      renderElementDate = summerCounter + this.props.summerDescription;
     }
-
     return renderElementDate;
   }
 
